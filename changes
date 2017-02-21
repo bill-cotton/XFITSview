@@ -1,0 +1,66 @@
+                  Change log for XFITSview
+
+Version 0.1: Initial public (beta) release.
+
+Version 0.2: Use more general Motif routines; fix bug in option box
+with images with only two axes. 
+
+Version 0.3: Fix bug in postion marking routines which could crash the
+program.  Dialog box is now not deleted after marking a position.
+Movie would not restart unless stop button was pressed; also fixed
+several problems with stopping the movie.
+Cleaned up several potential problems.
+
+Version 0.4: Handle Digitized Sky Survey (DSS) notion of coordinates.
+
+Version 0.5: Allow user selection of the coordinate Equinox for
+displayed and entered positions.  Given a celestial position, look up
+the appropriate file in a directory index and load the image.
+
+Version 1.0: Copy the currently displayed image into a specified file.
+Widen search for peak pixel around specified position when fitting
+positions. 
+
+Version 1.1: Fix bug in setting image plane in fitting position.
+Also several bugs causing XFITSview to blow up.  Convert dss  header
+info into wcs in the values displayed as "source info".
+
+Version 1.2: Increased display to use 128 colors.  Added histogram
+equalization option and made the default pixel range smarter (depends
+on the pixel histogram).  Improved on line help system.
+   Modified to use IRAF CD matrix coordinates. Now sub pixel "precision"
+in positions is obtained using left button clicks on a zoomed image.
+  Fix bug in converting dss to wcs for display; the sign
+of the RA pixel increment was wrong.  Also fixed a bug in the dss 
+coordinate routines that could give a 180 deg. error in the position
+if the PSS plate included a celestial pole.
+
+Version 1.2.1: Fixed bug in precessing coordinated in looking up a
+FITS file from the index file. 
+
+Version 1.3: Now works on more types of displays, especially the 
+linux 24 bit color displays.
+
+Version 1.3.1:
+Loading a new movie frame was screwing up the scrolling, fixed.
+Preview now can cope with FITS headers with LF/CR characters.
+Movie box now gives correct position on 3rd axis, was off by one pixel.
+Info box now only multiplies RA increments by 3600 on the strings 
+"RA  " and "RA--".
+
+Version 1.3.2
+Added support for images using the CD matrix coordinates but not from 
+IRAF.  Movie now runs continiously.
+
+Version 1.3.3
+Now accepts pixel values to mark in addition to celestial coordinates.
+
+Version 1.3.4
+Fix problem that caused crashed with LessTif; some dialogs now hidden rather 
+than destroyed and recreated.  Also do more checking for bad pointers.
+
+Version 2.0: 06 June 2005 distribute with autoconfig/configure scripts to build
+
+Version 2.1: June 2006 imagedisp:FitPos trap wild fits
+
+Version 2.2  Aug 2007: Trap failures in pfit and do simpler momemt fit

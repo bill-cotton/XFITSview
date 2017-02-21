@@ -1,0 +1,120 @@
+# $Id:  $
+#-----------------------------------------------------------------------
+#;  Copyright (C) 2005
+#;  Associated Universities, Inc. Washington DC, USA.
+#;
+#;  This program is free software; you can redistribute it and/or
+#;  modify it under the terms of the GNU General Public License as
+#;  published by the Free Software Foundation; either version 2 of
+#;  the License, or (at your option) any later version.
+#;
+#;  This program is distributed in the hope that it will be useful,
+#;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#;  GNU General Public License for more details.
+#;
+#
+#;  You should have received a copy of the GNU General Public
+#;  License along with this program; if not, write to the Free
+#;  Software Foundation, Inc., 675 Massachusetts Ave, Cambridge,
+#;  MA 02139, USA.
+#;
+#;  Correspondence concerning this software should be addressed as follows:
+#;         Internet email: bcotton@nrao.edu
+#;         Postal address: W. D. Cotton
+#;                         National Radio Astronomy Observatory
+#;                         520 Edgemont Road
+#;                         Charlottesville, VA 22903-2475 USA
+#-----------------------------------------------------------------------
+#
+#    XFITSview: FITS Image viewer 
+#
+#----------------------------------------------------
+CPPFLAGS = @CPPFLAGS@
+CC = @CC@
+
+# DEBUG is the debugger/optimizer flag, 
+#-------------------------------------
+# O is some general level of optimization
+DEBUG = -O
+OSFLAGS = 
+#DEBUG = -g   # debug
+
+# RANLIB = library "randomizer", ranlib if needed, else blank
+#-----------------------------------------------------------
+RANLIB = @RANLIB@
+
+# name of archive file
+ARCHIVE = @PACKAGE_TARNAME@Back@PACKAGE_VERSION@
+DISTRIB = @PACKAGE_TARNAME@@PACKAGE_VERSION@
+# Name of this directory
+DIRN = @PACKAGE_NAME@
+
+# Name of archiver, possibly gtar
+TAR = tar
+
+#------------------------------------------------------------------------
+TARGETS =  srcupdate fitsupdate libupdate XFITSview
+
+# just do Local for now
+ARCH = Local
+LIBDIR = lib/$(ARCH)/
+CFLAGS = -Iinclude -Ifitssubs @MOTIF_CPPFLAGS@ @X_CFLAGS@ \
+	$(DEBUG) $(OSFLAGS) @CFLAGS@ 
+LIBS = @MOTIF_LIBS@ -lfitsLib
+LDFLAGS = @MOTIF_LDFLAGS@ @X_LIBS@ -L$(LIBDIR)
+
+all:  $(TARGETS)
+
+# update source/object directory
+srcupdate: 
+	cd src; $(MAKE)
+
+# update fitssubs source/object directory
+fitsupdate: 
+	cd fitssubs; $(MAKE)
+
+# update fitssubs library directory
+libupdate: 
+	cd lib; $(MAKE) RANLIB="$(RANLIB)"
+
+# Link Obitview
+XFITSview: lib/$(ARCH)/libfitsLib.a  src/*.c XFITSview.c
+	$(CC) XFITSview.c -o XFITSview  $(CFLAGS) src/*.o $(LDFLAGS) $(LIBS)
+
+# make gzipped tar backup of directory
+backup:	
+	cd ..;rm -f $(ARCHIVE).tgz
+	cd ..;$(TAR) czvf $(ARCHIVE).tgz \
+		$(DIRN)/README $(DIRN)/LICENSE           \
+		$(DIRN)/Makefile*  $(DIRN)/src/Makefile.in  \
+		$(DIRN)/XFITSview.c  $(DIRN)/XFITSview.hlp  \
+		$(DIRN)/config*  $(DIRN)/aclocal.m4  \
+		$(DIRN)/install-sh  $(DIRN)/missing $(DIRN)/mkinstalldirs  \
+		$(DIRN)/changes  $(DIRN)/Notes.text  $(DIRN)/notes.text  \
+		$(DIRN)/src/*.c  $(DIRN)/src/Makefile.in   $(DIRN)/src/Makefile \
+		$(DIRN)/include/*.h  $(DIRN)/lib/Makefile  \
+		$(DIRN)/fitssubs/*.c  $(DIRN)/fitssubs/*.h  \
+		$(DIRN)/fitssubs/Makefile  $(DIRN)/fitssubs/Makefile.in  \
+		$(DIRN)/m4/*.m4 
+
+# make gzipped tar distribution
+distrib:	
+	cd ..;rm -f $(DISTRIB).tgz
+	cd ..;$(TAR) czvf $(DISTRIB).tgz \
+		$(DIRN)/README $(DIRN)/LICENSE           \
+		$(DIRN)/Makefile.in  $(DIRN)/src/Makefile.in  \
+		$(DIRN)/XFITSview.c  $(DIRN)/XFITSview.hlp  \
+		$(DIRN)/config*  $(DIRN)/aclocal.m4  \
+		$(DIRN)/install-sh  $(DIRN)/missing $(DIRN)/mkinstalldirs  \
+		$(DIRN)/changes  $(DIRN)/Notes.text  $(DIRN)/notes.text  \
+		$(DIRN)/src/*.c  $(DIRN)/src/Makefile.in \
+		$(DIRN)/include/*.h  $(DIRN)/lib/Makefile  \
+		$(DIRN)/fitssubs/*.c  $(DIRN)/fitssubs/*.h  \
+		$(DIRN)/fitssubs/Makefile.in 
+clean:
+	cd src;      $(MAKE) clean
+	cd lib;      $(MAKE) clean
+	cd fitssubs; $(MAKE) clean
+	rm -f XFITSview
+	rm -f *.o
