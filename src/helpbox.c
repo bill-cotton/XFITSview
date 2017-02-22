@@ -2,7 +2,7 @@
 /* adopted from "Power programming Motif" by E. F. Johnson and
    K. Reichard, 1993, MIS Press, New York */
 /*-----------------------------------------------------------------------
-*  Copyright (C) 1998-2007
+*  Copyright (C) 1998-2017
 *  Associated Universities, Inc. Washington DC, USA.
 *  This program is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU General Public License as
@@ -333,7 +333,7 @@ void InitHelpText(void) {
 "*** FINISHED ***"}; /* end of text */
 
    static  char *intro_text[] = {
-"                         XFITSview 2.2\n",
+"                         XFITSview 3.0\n",
 "  \n",
 "Please relay comments and/or suggestions to Bill Cotton at NRAO \n ",
 "(bcotton@nrao.edu) \n",

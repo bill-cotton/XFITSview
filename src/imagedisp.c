@@ -1,7 +1,7 @@
 /* Display widget for images for XFITSview */
 /* allows zoom and scroll            */
 /*-----------------------------------------------------------------------
-*  Copyright (C) 1996,1997,1999,2002,2006
+*  Copyright (C) 1996,1997,1999,2002,2006,2017
 *  Associated Universities, Inc. Washington DC, USA.
 *  This program is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU General Public License as
