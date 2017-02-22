@@ -64,3 +64,5 @@ Version 2.0: 06 June 2005 distribute with autoconfig/configure scripts to build
 Version 2.1: June 2006 imagedisp:FitPos trap wild fits
 
 Version 2.2  Aug 2007: Trap failures in pfit and do simpler momemt fit
+
+Version 3.0 22 Feb 2017: move to git repository on GitHub
