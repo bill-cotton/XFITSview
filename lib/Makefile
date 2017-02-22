@@ -36,8 +36,8 @@
 # targets to build
 TARGETS =  libfitsLib.a
 
-# list of object modules in $(ARCH)
-OBJECTS := $(wildcard $(ARCH)/*.o)
+# list of object modules
+OBJECTS := $(wildcard *.o)
 
 all:  $(TARGETS)
 
