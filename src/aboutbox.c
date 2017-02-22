@@ -37,7 +37,7 @@ void HelpAbout (ScrollTextPtr STextPtr)  {
     int loop, next, length;
     char *line[] = {
 "XFITSview 3.0 Viewer for images in FITS format ",
-"Copyright NRAO/AUI 1996-2007 ",
+"Copyright NRAO/AUI 1996-2017 ",
 " ",
 "   This software is distributed free of charge by NRAO. ",
 "The (USA) National Radio Astronomy Observatory (http://www.nrao.edu/) ",
