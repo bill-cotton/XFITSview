@@ -57,8 +57,7 @@ TAR = tar
 TARGETS =  srcupdate fitsupdate libupdate XFITSview
 
 # just do Local for now
-ARCH = Local
-LIBDIR = lib/$(ARCH)/
+LIBDIR = lib/
 CFLAGS = -Iinclude -Ifitssubs @MOTIF_CPPFLAGS@ @X_CFLAGS@ \
 	$(DEBUG) $(OSFLAGS) @CFLAGS@ 
 LIBS = @MOTIF_LIBS@ -lfitsLib
@@ -79,7 +78,7 @@ libupdate:
 	cd lib; $(MAKE) RANLIB="$(RANLIB)"
 
 # Link Obitview
-XFITSview: lib/$(ARCH)/libfitsLib.a  src/*.c XFITSview.c
+XFITSview: lib/libfitsLib.a  src/*.c XFITSview.c
 	$(CC) XFITSview.c -o XFITSview  $(CFLAGS) src/*.o $(LDFLAGS) $(LIBS)
 
 # make gzipped tar backup of directory
