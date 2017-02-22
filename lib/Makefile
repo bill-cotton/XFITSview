@@ -43,8 +43,8 @@ all:  $(TARGETS)
 
 #  build fitssub library
 libfitsLib.a: ${OBJECTS}
-	ar rv $(ARCH)/libfitsLib.a ${OBJECTS}
-	${RANLIB} $(ARCH)/libfitsLib.a
+	ar rv libfitsLib.a ${OBJECTS}
+	${RANLIB} libfitsLib.a
 
 clean:
 	rm -f $(TARGETS)
