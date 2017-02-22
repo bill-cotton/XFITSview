@@ -1,6 +1,6 @@
 /* about dialog box  for XFITSview */
 /*-----------------------------------------------------------------------
-*  Copyright (C) 1998-2007
+*  Copyright (C) 1998-2017
 *  Associated Universities, Inc. Washington DC, USA.
 *  This program is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU General Public License as
@@ -36,7 +36,7 @@ void HelpAboutCB (Widget w, XtPointer clientData, XtPointer callData) {
 void HelpAbout (ScrollTextPtr STextPtr)  {
     int loop, next, length;
     char *line[] = {
-"XFITSview 2.2 Viewer for images in FITS format ",
+"XFITSview 3.0 Viewer for images in FITS format ",
 "Copyright NRAO/AUI 1996-2007 ",
 " ",
 "   This software is distributed free of charge by NRAO. ",
