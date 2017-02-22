@@ -1,6 +1,6 @@
 /* lookup position from index, Equinox dialog boxes for XFITSview */
 /*-----------------------------------------------------------------------
-*  Copyright (C) 1996,1998,2002
+*  Copyright (C) 1996,1998,2002,2017
 *  Associated Universities, Inc. Washington DC, USA.
 *  This program is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU General Public License as
@@ -49,6 +49,7 @@ void upcase(char* string); /* uppercase string */
 int LookupBoxActive = 0;
 
 /* global structure for things to talk to each other */
+
 typedef struct {
   Widget       dialog, equlab;
   Widget       data1, data2; /* RA, Dec text windows */
