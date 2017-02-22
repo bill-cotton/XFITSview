@@ -1,6 +1,6 @@
 /* menu routines for XFITSview */
 /*-----------------------------------------------------------------------
-*  Copyright (C) 1996,1997,2002
+*  Copyright (C) 1996,1997,2002, 2017
 *  Associated Universities, Inc. Washington DC, USA.
 *  This program is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU General Public License as
