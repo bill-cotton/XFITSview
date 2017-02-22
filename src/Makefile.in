@@ -29,7 +29,7 @@
 #    Makefile to compile .c files and leave object files locally
 #
 #------------------------------------------------------------------------
-OBJDIR = ../lib/
+OBJDIR = ./
 top_srcdir = @top_srcdir@
 CC = @CC@
 CPPFLAGS = @CPPFLAGS@
@@ -59,7 +59,7 @@ all:  $(CTARGETS)
 # generic C compile
 $(CTARGETS): $(OBJDIR)%.o: %.c $(wildcard ../include/%*.h)
 	$(CC) -c $(ALL_CPPFLAGS) $(ALL_CFLAGS) $*.c
-	mv ./$*.o $@
+	#mv $*.o $@
 
 
 clean:
